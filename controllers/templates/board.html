@@ -1,0 +1,16 @@
+{{ define "title" }} GOmsg {{ end }}
+{{ define "body"}}
+<h2>Welcome to <span>{{ .Name }}</span>!</h2>
+<div class="button-container"><a href="/post/{{ .Name }}" class="blue-button">Post</a></div>	
+<section class="posts-container">
+	{{ range .Threads }}
+	<div class="post">
+		<section>
+		    <p>Thread ID: <span>{{ .ThreadID }}</span></p>
+		</section>
+		<h3><a href="/thread/{{ .ThreadID}}">{{ .Title }}</a></h3>
+		<p>{{ .Comment }}</p>
+	</div>
+	{{ end }}
+</section>
+{{ end }}

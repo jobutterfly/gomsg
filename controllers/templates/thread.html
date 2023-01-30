@@ -1,0 +1,21 @@
+{{ define "title" }} GOmsg {{ end }}
+{{ define "body"}}
+<section class="posts-container">
+	<div class="post">
+		<section>
+		    <p>Thread ID: <span>{{ .Op.ThreadID }}</span></p>
+		</section>
+		<h3><a href="/thread/{{ .Op.ThreadID }}">{{ .Op.Title }}</a></h3>
+		<p>{{ .Op.Comment }}</p>
+		<div class="button-container"><a href="/reply/{{ .Op.ThreadID }}" class="blue-button">Reply</a></div>
+	</div>
+	{{ range .Replies }}
+	<div class="post">
+		<section>
+		    <p>Reply ID: <span>{{ .ReplyID }}</span></p>
+		</section>
+		<p>{{ .Comment }}</p>
+	</div>
+	{{ end }}
+</section>
+{{ end }}

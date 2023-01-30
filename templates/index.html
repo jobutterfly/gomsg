@@ -1,0 +1,28 @@
+{{ define "title"}} GOmsg {{ end }}
+{{ define "body" }}
+<h2>What is <span>GO</span>msg?</h2>
+<section class="about-container">
+    <p><span>GO</span>msg is a website where people can talk about their interests. It is inspired by chan style boards and other message forums. There is a limit amount of threads per board and each thread has a limit amount of replies. Once the limit amount of replies is reached, the thread dies. If the limit amount of threads have already been created and another thread wants to be created, the oldest thread is killed so that the new one can be borne.</p>
+    <p>This project is written in <span>GO</span> and it is a way for me to practice the implementation of the modules net/http and text/template so that I can use these modules for bigger projects that I have planned. This website use no javascript and it is a sort of proof of work that websites do not need to be bloated as most of the modern web is. This project will also help me work on my CSS skills.</p>
+</section>
+<h2>See one of the recent posts!</h2>
+<section class="posts-container">
+	{{ range .Threads }}
+	<div class="post">
+		<section>
+		    <p>Thread ID: <span>{{ .ThreadID }}</span></p>
+		</section>
+		<h3><a href="/thread/{{ .ThreadID }}">{{ .Title }}</a></h3>
+		<p>{{ .Comment }}</p>
+	</div>
+	{{ end }}
+</section>
+<h2>Go to one of the boards</h2>
+<section>
+	<ul class="boards-list">
+		<li><a href="/board/tech">Tech</a></li>
+		<li><a href="/board/random">Random</a></li>
+		<li><a href="/board/sports">Sports</a></li>
+	</ul>
+</section>
+{{ end }}

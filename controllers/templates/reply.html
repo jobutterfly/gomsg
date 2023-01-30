@@ -1,0 +1,18 @@
+{{ define "title" }} GOmsg {{ end }}
+{{ define "body"}}
+<div class="form-container">
+    <form action="/reply/{{ .Thread_id }}" method="POST">
+	    <h2>Reply: {{ .Thread_id }}</h2>
+		<div>
+			<label for="comment">Comment</label>
+			<textarea required maxlength="1200" id="comment" name="comment" rows="10">{{ .Comment }}</textarea>
+			{{ if eq .Error.Field "comment" }}
+			{{ if .Error.Bool }}
+			<p class="error-message">{{ .Error.Message }}</p>
+			{{ end }}
+			{{ end }}
+		</div>
+		<button type="submit" class="blue-button">Submit</button>
+	</form>
+</div>
+{{ end }}
